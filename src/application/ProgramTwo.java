@@ -20,5 +20,12 @@ public class ProgramTwo {
 		System.out.println("\n### TEST 2: department findAll ###");
 		List<Department> list = departmentDao.findAll();
 		list.forEach(System.out::println);
+		
+		System.out.println("\n### TEST 3: department update ###");
+		department = departmentDao.findById(7);
+		department.setName("Software");
+		departmentDao.update(department);
+		System.out.println("Update completed!");
+		
 	}
 }
