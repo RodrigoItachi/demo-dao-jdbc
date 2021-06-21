@@ -90,7 +90,6 @@ public class SellerDaoJDBC implements SellerDao {
 			if (rowsAffected == 0) {
 				throw new DbException("Nonexistent id.");
 			}
-
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage());
 		} finally {
