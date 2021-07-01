@@ -72,7 +72,7 @@ public class SellerDaoJDBC implements SellerDao {
 
 			preparedStatement.executeUpdate();
 
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			throw new DbException(e.getMessage());
 		} finally {
 			DBConnection.closeStatement(preparedStatement);
@@ -102,7 +102,6 @@ public class SellerDaoJDBC implements SellerDao {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		try {
-			connection = DBConnection.getConnection();
 			preparedStatement = connection.prepareStatement(
 					"SELECT seller.*, department.Name AS DepName " + "FROM seller INNER JOIN department "
 							+ "ON seller.DepartmentId = department.Id " + "WHERE seller.Id = ?");
@@ -162,7 +161,6 @@ public class SellerDaoJDBC implements SellerDao {
 		ResultSet resultSet = null;
 
 		try {
-			connection = DBConnection.getConnection();
 			preparedStatement = connection.prepareStatement(
 					"SELECT seller.*, department.Name AS DepName " + "FROM seller INNER JOIN department "
 							+ "ON seller.DepartmentId = department.Id " + "ORDER BY Name");
